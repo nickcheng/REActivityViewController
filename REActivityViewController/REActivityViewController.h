@@ -30,9 +30,7 @@
 // Check is iPhone5 screen
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 
-@interface REActivityViewController : UIViewController {
-    UIView *_backgroundView;
-}
+@interface REActivityViewController : UIViewController
 
 @property (strong, readonly, nonatomic) NSArray *activities;
 @property (strong, nonatomic) NSDictionary *userInfo;

@@ -25,16 +25,18 @@
 
 #import "REActivityViewController.h"
 #import "REActivityView.h"
+#import "UIView+SSToolkitAdditions.h"
+#import "GPUImageFastBlurFilter.h"
 
 @interface REActivityViewController ()
-
-@property (strong, readonly, nonatomic) UIView *backgroundView;
 
 - (NSInteger)height;
 
 @end
 
-@implementation REActivityViewController
+@implementation REActivityViewController {
+  UIView *_backgroundView;
+}
 
 - (void)loadView {
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
@@ -118,7 +120,7 @@
   __typeof (&*self) __weak weakSelf = self;
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
     [UIView animateWithDuration:0.4 animations:^{
-      weakSelf.backgroundView.alpha = 0.4;
+      _backgroundView.alpha = 0.4;
       
       CGRect frame = weakSelf.activityView.frame;
       
