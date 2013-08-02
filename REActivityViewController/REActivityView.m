@@ -25,6 +25,7 @@
 
 #import "REActivityView.h"
 #import "REActivityViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation REActivityView
 
@@ -86,13 +87,14 @@
     }
     
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_cancelButton setBackgroundImage:[[UIImage imageNamed:@"REActivityViewController.bundle/Button"] stretchableImageWithLeftCapWidth:22 topCapHeight:47] forState:UIControlStateNormal];
-    _cancelButton.frame = CGRectMake(22, 352, 276, 47);
-    [_cancelButton setTitle:NSLocalizedStringFromTable(@"button.cancel", @"REActivityViewController", @"Cancel") forState:UIControlStateNormal];
+    _cancelButton.backgroundColor = [UIColor colorWithRed:1 green:105.f / 255.f blue:90.f / 255.f alpha:1];
+//    [_cancelButton setBackgroundImage:[[UIImage imageNamed:@"REActivityViewController.bundle/Button"] stretchableImageWithLeftCapWidth:22 topCapHeight:47] forState:UIControlStateNormal];
+    _cancelButton.frame = CGRectMake(22, 352, 286, 36);
+    _cancelButton.layer.cornerRadius = 18;
+    [_cancelButton setTitle:NSLocalizedString(@"button.cancel", @"Cancel") forState:UIControlStateNormal];
     [_cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_cancelButton setTitleShadowColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4] forState:UIControlStateNormal];
-    [_cancelButton.titleLabel setShadowOffset:CGSizeMake(0, -1)];
-    [_cancelButton.titleLabel setFont:[UIFont boldSystemFontOfSize:19]];
+    [_cancelButton.titleLabel setFont:[UIFont fontWithName:@"NeoSansStd-Regular" size:18]];
+    _cancelButton.titleEdgeInsets = UIEdgeInsetsMake(5, 0, 0, 0);
     [_cancelButton addTarget:self action:@selector(cancelButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_cancelButton];
   }
@@ -103,21 +105,19 @@
   UIView *view = [[UIView alloc] initWithFrame:CGRectMake(x, y, 80, 80)];
   
   UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-  button.frame = CGRectMake(10, 0, 59, 59);
+  button.frame = CGRectMake(10, 0, 60, 60);
   button.tag = index;
   [button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
   [button setBackgroundImage:activity.image forState:UIControlStateNormal];
   button.accessibilityLabel = activity.title;
   [view addSubview:button];
   
-  UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 59, 80, 30)];
+  UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 65, 80, 30)];
   label.textAlignment = UITextAlignmentCenter;
+  label.textColor = [UIColor colorWithRed:73.f/255.f green:198.f/255.f blue:215.f/255.f alpha:1];
   label.backgroundColor = [UIColor clearColor];
-  label.textColor = [UIColor whiteColor];
-  label.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.75];
-  label.shadowOffset = CGSizeMake(0, 1);
   label.text = activity.title;
-  label.font = [UIFont boldSystemFontOfSize:12];
+  label.font = [UIFont fontWithName:@"NeoSansStd-Regular" size:12];
   label.numberOfLines = 0;
   [label setNumberOfLines:0];
   [label sizeToFit];
