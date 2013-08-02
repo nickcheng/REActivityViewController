@@ -35,7 +35,7 @@
 @end
 
 @implementation REActivityViewController {
-  UIView *_backgroundView;
+  UIImageView *_backgroundView;
 }
 
 - (void)loadView {
@@ -54,7 +54,7 @@
     self.presentingController = viewController;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-      _backgroundView = [[UIView alloc] initWithFrame:self.view.bounds];
+      _backgroundView = [[UIImageView alloc] initWithFrame:self.view.bounds];
       _backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
       _backgroundView.backgroundColor = [UIColor blackColor];
       _backgroundView.alpha = 0;
@@ -119,8 +119,16 @@
   
   __typeof (&*self) __weak weakSelf = self;
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+    // Make blured background image and set to _backgroundView
+    UIImage *oriImage = [self.rootViewController.view imageRepresentation];
+    GPUImageFastBlurFilter *filter = [[GPUImageFastBlurFilter alloc] init];
+    filter.blurPasses = 3;
+    UIImage *bgImage = [filter imageByFilteringImage:oriImage];
+    [_backgroundView setImage:bgImage];
+
+    //
     [UIView animateWithDuration:0.4 animations:^{
-      _backgroundView.alpha = 0.4;
+      _backgroundView.alpha = 1;
       
       CGRect frame = weakSelf.activityView.frame;
       
