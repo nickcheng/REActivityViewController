@@ -88,7 +88,6 @@
     
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _cancelButton.backgroundColor = [UIColor colorWithRed:1 green:105.f / 255.f blue:90.f / 255.f alpha:1];
-//    [_cancelButton setBackgroundImage:[[UIImage imageNamed:@"REActivityViewController.bundle/Button"] stretchableImageWithLeftCapWidth:22 topCapHeight:47] forState:UIControlStateNormal];
     _cancelButton.frame = CGRectMake(22, 352, 286, 36);
     _cancelButton.layer.cornerRadius = 18;
     [_cancelButton setTitle:NSLocalizedString(@"button.cancel", @"Cancel") forState:UIControlStateNormal];
