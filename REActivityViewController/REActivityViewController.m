@@ -110,11 +110,11 @@
   self.rootViewController = controller;
   [controller addChildViewController:self];
   [controller.view addSubview:self.view];
-  [self didMoveToParentViewController:controller];
+  [self ddidMoveToParentViewController:controller];
 }
 
-- (void)didMoveToParentViewController:(UIViewController *)parent {
-  [super didMoveToParentViewController:parent];
+- (void)ddidMoveToParentViewController:(UIViewController *)parent {
+//  [super didMoveToParentViewController:parent];
   _backgroundView.frame = self.rootViewController.view.bounds;
   
   __typeof (&*self) __weak weakSelf = self;
