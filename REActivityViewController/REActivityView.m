@@ -93,7 +93,7 @@
     [_cancelButton setTitle:NSLocalizedString(@"button.cancel", @"Cancel") forState:UIControlStateNormal];
     [_cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_cancelButton.titleLabel setFont:[UIFont fontWithName:@"NeoSansStd-Regular" size:18]];
-    _cancelButton.titleEdgeInsets = UIEdgeInsetsMake(5, 0, 0, 0);
+    _cancelButton.titleEdgeInsets = UIEdgeInsetsMake(7, 0, 0, 0);
     [_cancelButton addTarget:self action:@selector(cancelButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_cancelButton];
   }
