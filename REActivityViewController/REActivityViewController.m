@@ -48,6 +48,10 @@
   }
 }
 
+- (void)backViewTapped:(id)sender {
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (id)initWithViewController:(UIViewController *)viewController activities:(NSArray *)activities {
   self = [super init];
   if (self) {
@@ -59,6 +63,9 @@
       _backgroundView.backgroundColor = [UIColor blackColor];
       _backgroundView.alpha = 0;
       [self.view addSubview:_backgroundView];
+      _backgroundView.userInteractionEnabled = YES;
+      UITapGestureRecognizer *backgroundViewGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backViewTapped:)];
+      [_backgroundView addGestureRecognizer:backgroundViewGR];
     } else {
       self.view.frame = CGRectMake(0, 0, 320, 417);
     }
