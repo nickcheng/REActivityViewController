@@ -111,15 +111,14 @@
   button.accessibilityLabel = activity.title;
   [view addSubview:button];
   
-  UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 65, 80, 30)];
+  UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 66, 80, 32)];
   label.textAlignment = UITextAlignmentCenter;
   label.textColor = [UIColor colorWithRed:73.f/255.f green:198.f/255.f blue:215.f/255.f alpha:1];
   label.backgroundColor = [UIColor clearColor];
   label.text = activity.title;
   label.font = [UIFont fontWithName:@"NeoSansStd-Regular" size:12];
   label.numberOfLines = 0;
-  [label setNumberOfLines:0];
-  [label sizeToFit];
+//  [label sizeToFit];
   CGRect frame = label.frame;
   frame.origin.x = roundf((view.frame.size.width - frame.size.width) / 2.0f);
   label.frame = frame;
