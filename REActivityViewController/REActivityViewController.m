@@ -26,7 +26,7 @@
 #import "REActivityViewController.h"
 #import "REActivityView.h"
 #import "UIView+SSToolkitAdditions.h"
-#import "GPUImageFastBlurFilter.h"
+#import "UIImage+StackBlur.h"
 
 @interface REActivityViewController ()
 
@@ -128,9 +128,7 @@
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
     // Make blured background image and set to _backgroundView
     UIImage *oriImage = [self.rootViewController.view imageRepresentation];
-    GPUImageFastBlurFilter *filter = [[GPUImageFastBlurFilter alloc] init];
-    filter.blurPasses = 3;
-    UIImage *bgImage = [filter imageByFilteringImage:oriImage];
+    UIImage *bgImage = [oriImage stackBlur:20];
     [_backgroundView setImage:bgImage];
 
     //
